@@ -19,7 +19,7 @@ def homepage():
 def applicationform():
     """serves the template application-form.html"""
     jobs = ["QA Engineer", "Product Manager", "Software Engineer"]
-    return render_template("application-form.html", jobs=positions)
+    return render_template("application-form.html", positions=jobs)
 
 
 @app.route('/application-success', methods=["POST"])
@@ -27,9 +27,10 @@ def applicationresponse():
     """serves the template application-response.html"""
     firstname = request.form.get("firstname")
     lastname = request.form.get("lastname")
-    quantity = request.form.get("quantity")
-    position = request.form.get("position")
-    return render_template("application-response.html", firstname=firstname, lastname=lastname, quantity=salary, position=position)
+    quantity = float(request.form.get("quantity"))
+    job = request.form.get("position")
+    print job
+    return render_template("application-response.html", firstname=firstname, lastname=lastname, salary=quantity, position=job)
 
 
 if __name__ == "__main__":

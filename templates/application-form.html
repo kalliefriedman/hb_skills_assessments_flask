@@ -4,14 +4,14 @@
 {% block content %}
     <h1>Thank you for your interest in our company!</h1>
     <h2>Please answer the questions below to submit your application</h2>
-    <form action="/application-success" method="post">
+    <form action="/application-success" method="POST">
       First name: <input class="yellowbackground" type="text" name="firstname"><br>
       Last name: <input class="yellowbackground" id="lastnamefield" type="text" name="lastname"><br>
       Expected salary: <input class="yellowbackground" type="number" name="quantity"><br>
       Select the position you're applying for: 
-      <select>
+      <select name="position">
         {% for position in positions %}
-        <option value="position">position</option>
+        <option value="{{ position }}">{{ position }}</option>
         {% endfor %}
       </select><br><br>
       <input class="yellowbackground" type="submit" value="Submit">
